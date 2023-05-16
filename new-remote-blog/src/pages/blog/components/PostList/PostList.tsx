@@ -1,56 +1,9 @@
-import { RootState, useAppDispatch } from 'store'
+import { useGetPostsQuery } from 'pages/blog/blog.service'
 import PostItem from '../PostItem'
-import { useSelector } from 'react-redux'
-import { Post } from 'types/blog.type'
-import { deletePost, startEditingPost, getPostList } from 'pages/blog/blog.slice'
-import { useEffect } from 'react'
 import SkeletonPost from '../SkeletonPost'
-// import http from 'utils/http'
 
 export default function PostList() {
-  const postList = useSelector((state: RootState) => state.blog.postList)
-  const loading = useSelector((state: RootState) => state.blog.loading)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    // axios
-    //  const controller = new AbortController()
-    // http
-    //   .get('posts', {
-    //     signal: controller.signal
-    //   })
-    //   .then((res) => {
-    //     console.log(res)
-    //     const postListResult = res.data
-    //     dispatch({
-    //       type: 'blog/getPostListSuccess',
-    //       payload: postListResult
-    //     })
-    //   })
-    //   .catch((error) => {
-    //     if (!(error.code == 'ERR_CANCELED')) {
-    //       dispatch({
-    //         type: 'blog/getPostListFailed'
-    //       })
-    //     }
-    //   })
-
-    // return () => {
-    //   controller.abort()
-    // }
-    const promise = dispatch(getPostList())
-    return () => {
-      promise.abort()
-    }
-  }, [dispatch])
-
-  const handleDelete = (postID: string) => {
-    dispatch(deletePost(postID))
-  }
-  const handleEditing = (postID: string) => {
-    dispatch(startEditingPost(postID))
-  }
-
+  const { data, isLoading, isFetching } = useGetPostsQuery()
   return (
     <div className='bg-white py-6 sm:py-8 lg:py-12'>
       <div className='mx-auto max-w-screen-xl px-4 md:px-8'>
@@ -61,16 +14,13 @@ export default function PostList() {
           </p>
         </div>
         <div className='grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-2 xl:grid-cols-2 xl:gap-8'>
-          {loading && (
+          {isFetching && (
             <>
               <SkeletonPost />
               <SkeletonPost />
             </>
           )}
-          {!loading &&
-            postList.map((post: Post) => (
-              <PostItem key={post.id} post={post} handleDelete={handleDelete} handleEditing={handleEditing} />
-            ))}
+          {!isFetching && data?.map((post) => <PostItem post={post} key={post.id} />)}
         </div>
       </div>
     </div>
