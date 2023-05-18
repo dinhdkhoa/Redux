@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/dist/query'
+import { rtkQueryErrorLogger } from 'middleware'
 import { blogApi } from 'pages/blog/blog.service'
 import blogReducer from 'pages/blog/blog.slice'
 // ...
@@ -11,7 +12,7 @@ export const store = configureStore({
   },
   //thêm api middleware để enable các tính năng như caching, invalidation, polling của rtk-query
 
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(blogApi.middleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(blogApi.middleware, rtkQueryErrorLogger)
 })
 // Nếu dùng refetchOnFocus/ refetchOnReconnect
 setupListeners(store.dispatch)

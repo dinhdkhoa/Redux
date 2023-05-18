@@ -2,11 +2,11 @@
   "posts": [
     {
       "description": "Nghịch cảnh là một phần của cuộc sống. Nó không thể bị kiểm soát. Cái có thể kiểm soát chính là cách chúng ta phản ứng trước nghịch cảnh.\n",
-      "featuredImage": "https://images.unsplash.com/photo-1665412019489-1928d5afa5cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+      "featuredImage": "https://images.unsplash.com/photo-1677775204944-47e13173a2c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
       "id": "2022-10-12T04:32:48.650Z",
       "publishDate": "2023-05-25T11:32",
       "published": true,
-      "title": "Nghịch cảnh việc thành đạt đều nhờ sự kiên trì và lòng say mê."
+      "title": "Nơi nào có ý chí, nơi đó có con đường."
     },
     {
       "description": "Bạn chớ nên bỏ cuộc khi bạn vẫn còn điều gì đó để cho đi. Không có gì là hoàn toàn bế tắc, sự việc chỉ thật sự trở nên bế tắc khi bạn thôi không cố gắng nữa.\n",
@@ -31,14 +31,6 @@
       "publishDate": "2022-10-16T11:35",
       "published": false,
       "title": "Nơi nào có ý chí, nơi đó có con đường."
-    },
-    {
-      "description": "asdasdasd",
-      "featuredImage": "asdasdasd",
-      "publishDate": "2023-05-17T06:46",
-      "published": true,
-      "title": "asdasd",
-      "id": "r2SpWSS"
     }
   ]
 }
