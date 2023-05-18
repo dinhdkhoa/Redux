@@ -4,7 +4,13 @@ import { Post } from 'types/blog.type'
 export const blogApi = createApi({
   reducerPath: 'blogApi',
   tagTypes: ['Posts'], // những kiểu tag cho phép dùng trong api để gọi ép gọi lại api cho việc cappj nhật state
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:4000/',
+    prepareHeaders(headers) {
+      headers.set('authorization', 'Bearer ABCXYZ')
+      return headers
+    }
+  }),
   endpoints: (build) => ({
     // Generic type có kiểu response (Post[]) và argument void
     getPosts: build.query<Post[], void>({
@@ -60,7 +66,16 @@ export const blogApi = createApi({
     }),
     getPost: build.query<Post, string>({
       //<a,b> a là dữ liệu trả về, b là cái truyền lên, vd nhận về 1 cái post và truyền lên id:string từ api
-      query: (id) => `posts/${id}`
+      query: (id) => ({
+        url: `posts/${id}`,
+        headers: {
+          hello: 'Hi'
+        },
+        params: {
+          'first-name': 'du',
+          'last-name': 'duoc'
+        }
+      })
     }),
     updatePost: build.mutation<Post, { id: string; body: Post }>({
       query(data) {
