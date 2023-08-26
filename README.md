@@ -1,3 +1,3 @@
 # Redux-RTK
 
-A CRUD App using react-redux
+4 CRUD Apps using react-redux
